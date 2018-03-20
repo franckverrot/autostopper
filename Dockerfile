@@ -1,0 +1,14 @@
+FROM ruby:2.5
+
+ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
+ENV AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
+
+WORKDIR /app
+ADD Gemfile .
+ADD Gemfile.lock .
+
+RUN bundle
+
+ADD main.rb .
+
+CMD ruby main.rb
